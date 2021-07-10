@@ -8,8 +8,8 @@
 """
 ✘ Commands Available -
 
-•`{i} autowaifu on/off`
-  This auto show result for @loli_harem_bot.
+•`{i} autoservant on/off`
+  This auto show result for @FateWaifugram_Bot.
   
 """
 import os
@@ -17,23 +17,23 @@ import requests
 from asyncio import sleep
 from bs4 import BeautifulSoup as bs
 from . import *
-XX = "A qt waifu appeared!"
+XX = "A qt servant appeared!"
 
-@ultroid_cmd(pattern="autowaifu ?(.*)")
+@ultroid_cmd(pattern="autoservant ?(.*)")
 async def _(e): 
     args = e.pattern_match.group(1)
     uff = await eor(e,"`Processing...`")
     if args:
         if args == "on":
-            udB.set("WAIFU","TRUE")
-            return await uff.edit("AutoWaifu - ON")
+            udB.set("SERVANT","TRUE")
+            return await uff.edit("AutoServant - ON")
         if args == "off":
-            udB.set("WAIFU","FALSE")
-            return await uff.edit("AutoWaifu - OFF")
+            udB.set("SERVANT","FALSE")
+            return await uff.edit("AutoServant - OFF")
 
-    waifu = udB.get("WAIFU")
+    waifu = udB.get("SERVANT")
     status = "ON" if waifu == "TRUE" else "OFF"
-    return await uff.edit(f"AutoWaifu - {status}")
+    return await uff.edit(f"AutoServant - {status}")
 
 @ultroid_bot.on(events.NewMessage(incoming=True))
 async def reverse(event):
@@ -43,7 +43,7 @@ async def reverse(event):
         return
     if not event.sender_id == 792028928:
         return
-    if Redis("WAIFU")!="TRUE":
+    if Redis("SERVANT")!="TRUE":
         return
     dl = await ultroid_bot.download_media(event.media, "resources/")
     file = {"encoded_image": (dl, open(dl, "rb"))}
