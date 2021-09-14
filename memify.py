@@ -4,13 +4,13 @@ import textwrap
 from PIL import Image, ImageFont, ImageDraw
 from LaylaRobot import dispatcher
 from LaylaRobot import telethn as bot
-from LaylaRobot.events import register as asuna
+from LaylaRobot.events import register as Kaguya
 
 
 Credit = "This Plugin Made by Kittu (@A_viyu), if you're using this code in your bot. there is no issue but don't remove this line" 
 
 
-#@asuna.on_message(filters.command("mmf"))
+#@Kaguya.on_message(filters.command("mmf"))
 @asuna(pattern="^/mmf ?(.*)")
 async def handler(event):
     if event.fwd_from:
